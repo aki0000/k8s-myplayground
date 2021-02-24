@@ -8,4 +8,4 @@
 [https://github.com/aki0000/k8s-myplayground/issues/1]
 
 ## Diagram
-![blank diagram - copy 1](https://user-images.githubusercontent.com/36725422/108822118-f86efc00-7601-11eb-88f4-fd47462c4b80.png)
+![my-k8s-playground](https://user-images.githubusercontent.com/36725422/108973060-4d287a80-76c7-11eb-918f-251f7068b14b.png)
