@@ -20,7 +20,7 @@ spec:
     spec:
       securityContext:
         runAsUser: 472
-        fsGroup: 472
+        fsGroup: 0
       containers:
       - image: grafana/grafana
         name: {{ .Release.Name }}
