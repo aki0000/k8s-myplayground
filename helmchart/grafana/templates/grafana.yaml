@@ -18,6 +18,9 @@ spec:
       labels:
         app: {{ .Release.Name }}
     spec:
+      securityContext:
+        runAsUser: 472
+        fsGroup: 472
       containers:
       - image: grafana/grafana
         name: {{ .Release.Name }}
