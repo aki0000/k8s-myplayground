@@ -11,4 +11,4 @@ spec:
     - ReadWriteOnce
   nfs:
     server: 192.168.100.109
-    path: "/mnt/data/elasticsearch"
+    path: "/mnt/data/grafana"
