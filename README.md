@@ -9,3 +9,6 @@
 
 ## Diagram
 ![my-k8s-playground](https://user-images.githubusercontent.com/36725422/108973060-4d287a80-76c7-11eb-918f-251f7068b14b.png)
+
+## CICD
+GitHub Action is being used for k8s reousce Deployment 
