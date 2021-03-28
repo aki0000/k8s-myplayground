@@ -24,6 +24,8 @@ spec:
         volumeMounts:
         - name: grafana-prometheus-configmap
           mountPath: "/etc/grafana/provisioning/datasources"
+        - name: {{ .Release.Name }}-storage
+          mountPath: /var/lib/grafana
         env:
         - name: GF_SECURITY_ADMIN_USER
           value: "admin"
@@ -33,3 +35,6 @@ spec:
       - name: grafana-prometheus-configmap
         configMap:
           name: grafana-prometheus-datasource
+      - name: {{ .Release.Name }}-storage
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-pvc
