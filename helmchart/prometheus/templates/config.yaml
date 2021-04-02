@@ -48,6 +48,8 @@ data:
       - 192.168.100.109:9100
       labels:
         system: "node-exporter"
+
+  sd_api_server.yaml: |-
     - targets:
       - 192.168.100.101:10249
       - 192.168.100.102:10249
