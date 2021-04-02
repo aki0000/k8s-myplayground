@@ -26,6 +26,10 @@ data:
         file_sd_configs:
           - files:
             - sd_node_exporter.yaml
+      - job_name: 'api-server'
+        file_sd_configs:
+          - files:
+            - sd_api_server.yaml
 
   rules.yaml: |-
     groups:
@@ -44,3 +48,9 @@ data:
       - 192.168.100.109:9100
       labels:
         system: "node-exporter"
+    - targets:
+      - 192.168.100.101:10249
+      - 192.168.100.102:10249
+      - 192.168.100.103:10249
+      labels:
+        system: "api-server"
