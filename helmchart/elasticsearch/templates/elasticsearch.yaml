@@ -12,6 +12,10 @@ spec:
   selector:
     matchLabels:
       app: {{ .Release.Name }}
+  tolerations:
+  - key: app
+    value: {{ .Release.Name }}
+    effect: NoSchedule
   template:
     metadata:
       creationTimestamp: null
