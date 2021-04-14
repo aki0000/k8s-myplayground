@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: {{ .Release.Name }}
-  name: {{ .Release.Name }}
+  name: {{ .Release.Name }}-lb
   namespace: {{ .Release.Namespace }}
 spec:
   ports:
@@ -13,4 +13,5 @@ spec:
     targetPort: 9200
   selector:
     app: {{ .Release.Name }}
-  type: ClusterIP
+  type: LoadBalancer
+
