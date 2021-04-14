@@ -20,7 +20,7 @@ spec:
     spec:
       securityContext:
       containers:
-      - image:  docker.elastic.co/kibana/kibana:7.12.0
+      - image:  akitec/kibana-arm64:7.12.0
         name: {{ .Release.Name }}
         ports:
         - containerPort: 5601
