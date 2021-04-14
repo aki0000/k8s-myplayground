@@ -12,10 +12,6 @@ spec:
   selector:
     matchLabels:
       app: {{ .Release.Name }}
-  tolerations:
-  - key: app
-    value: {{ .Release.Name }}
-    effect: NoSchedule
   template:
     metadata:
       creationTimestamp: null
@@ -37,6 +33,10 @@ spec:
           name: api
         - containerPort: 9300
           name: gossip 
+        tolerations:
+        - key: app
+          value: {{ .Release.Name }}
+          effect: NoSchedule
       volumes: 
       - name: {{ .Release.Name }}-data
         persistentVolumeClaim:
