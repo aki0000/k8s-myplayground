@@ -8,9 +8,9 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   ports:
-  - port: 9200
+  - port: 5601
     protocol: TCP
-    targetPort: 9200
+    targetPort: 5601
   selector:
     app: {{ .Release.Name }}
   type: LoadBalancer
