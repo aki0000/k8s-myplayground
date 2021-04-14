@@ -9,9 +9,15 @@ metadata:
 spec:
   replicas: 1
   serviceName: "elasticseach"
-  selector:
-    matchLabels:
-      app: {{ .Release.Name }}
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - elasticsearch
   template:
     metadata:
       creationTimestamp: null
