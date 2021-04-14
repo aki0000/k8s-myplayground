@@ -8,7 +8,8 @@
 
 
 ## Diagram
-![my-k8s-playground](https://user-images.githubusercontent.com/36725422/108973060-4d287a80-76c7-11eb-918f-251f7068b14b.png)
+![myk8s](https://user-images.githubusercontent.com/36725422/114734114-e5b1b180-9d7e-11eb-823c-79fe68e81800.jpg)
+
 
 ## CICD
 GitHub Action is being used for k8s reousce Deployment 
