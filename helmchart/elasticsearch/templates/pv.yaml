@@ -6,7 +6,7 @@ spec:
   storageClassName: standard
   capacity:
     storage: 10Gi
-  persistentVolumeReclaimPolicy: Delete
+  persistentVolumeReclaimPolicy: Recycle
   accessModes:
     - ReadWriteOnce
   nfs:
