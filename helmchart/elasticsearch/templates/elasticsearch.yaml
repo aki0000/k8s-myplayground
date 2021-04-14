@@ -32,7 +32,8 @@ spec:
         - containerPort: 9200
           name: api
         - containerPort: 9300
-          name: gossip  
+          name: gossip 
+      volumes: 
       - name: {{ .Release.Name }}-data
         persistentVolumeClaim:
           claimName: {{ .Release.Name }}-pvc
