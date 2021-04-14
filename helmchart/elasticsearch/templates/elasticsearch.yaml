@@ -33,10 +33,10 @@ spec:
           name: api
         - containerPort: 9300
           name: gossip 
-        tolerations:
-        - key: app
-          value: {{ .Release.Name }}
-          effect: NoSchedule
+      tolerations:
+      - key: app
+        value: {{ .Release.Name }}
+        effect: NoSchedule
       volumes: 
       - name: {{ .Release.Name }}-data
         persistentVolumeClaim:
