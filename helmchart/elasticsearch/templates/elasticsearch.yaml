@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  creationTimestamp: null
+  labels:
+    app: {{ .Release.Name }}
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  serviceName: "elasticseach"
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      securityContext:
+      containers:
+      - image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
+        name: {{ .Release.Name }}
+        volumeMounts:
+        - name: {{ .Release.Name }}-data
+          mountPath: /data
+        env:
+        - name: discovery.type
+          value: single-node
+        ports:
+        - containerPort: 9200
+          name: api
+        - containerPort: 9300
+          name: gossip  
+      - name: {{ .Release.Name }}-data
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-pvc
