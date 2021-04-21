@@ -3,27 +3,27 @@ kind: StatefulSet
 metadata:
   creationTimestamp: null
   labels:
-    app: {{ .Release.Name }}
-  name: {{ .Release.Name }}
+    app: kibana-{{ .Release.Name }}
+  name: kibana-{{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   serviceName: "kibana"
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: kibana-{{ .Release.Name }}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: {{ .Release.Name }}
+        app: kibana-{{ .Release.Name }}
     spec:
       securityContext:
       containers:
       - image:  akitec/kibana-arm64:7.12.0
-        name: {{ .Release.Name }}
+        name: kibana-{{ .Release.Name }}
         ports:
         - containerPort: 5601
         env:
         - name: ELASTICSEARCH_HOSTS
-          value: http://elasticsearch.monitoring.svc.cluster.local:9200
+          value: http://elasticsearch-{{ .Release.Name }}.monitoring.svc.cluster.local:9200

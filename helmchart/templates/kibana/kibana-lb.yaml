@@ -3,8 +3,8 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: {{ .Release.Name }}
-  name: {{ .Release.Name }}-lb
+    app: kibana-{{ .Release.Name }}
+  name: kibana-lb-{{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   ports:
@@ -12,6 +12,6 @@ spec:
     protocol: TCP
     targetPort: 5601
   selector:
-    app: {{ .Release.Name }}
+    app: kibana-{{ .Release.Name }}
   type: LoadBalancer
 
