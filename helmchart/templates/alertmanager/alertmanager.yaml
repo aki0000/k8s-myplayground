@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: {{ .Release.Name }}
-  name: {{ .Release.Name }}
+    app: alertmanger-{{ .Release.Name }}
+  name: alertmanger-{{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: alertmanger-{{ .Release.Name }}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: {{ .Release.Name }}
+        app: alertmanger-{{ .Release.Name }}
     spec:
       containers:
       - image: quay.io/prometheus/alertmanager
-        name: {{ .Release.Name }}
+        name: alertmanger-{{ .Release.Name }}
