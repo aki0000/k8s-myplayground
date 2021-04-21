@@ -3,31 +3,31 @@ kind: StatefulSet
 metadata:
   creationTimestamp: null
   labels:
-    app: {{ .Release.Name }}
-  name: {{ .Release.Name }}
+    app: grafana-{{ .Release.Name }}
+  name: grafana-{{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   serviceName: "grafana"
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: grafana-{{ .Release.Name }}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: {{ .Release.Name }}
+        app: grafana-{{ .Release.Name }}
     spec:
       securityContext:
         runAsUser: 0
         fsGroup: 472
       containers:
       - image: grafana/grafana
-        name: {{ .Release.Name }}
+        name: grafana-{{ .Release.Name }}
         volumeMounts:
         - name: grafana-prometheus-configmap
           mountPath: "/etc/grafana/provisioning/datasources"
-        - name: {{ .Release.Name }}-storage
+        - name: grafana-storage-{{ .Release.Name }}
           mountPath: /var/lib/grafana
         env:
         - name: GF_SECURITY_ADMIN_USER
@@ -38,6 +38,6 @@ spec:
       - name: grafana-prometheus-configmap
         configMap:
           name: grafana-prometheus-datasource
-      - name: {{ .Release.Name }}-storage
+      - name: grafana-storage-{{ .Release.Name }}
         persistentVolumeClaim:
-          claimName: {{ .Release.Name }}-pvc
+          claimName: grafana-pvc-{{ .Release.Name }}

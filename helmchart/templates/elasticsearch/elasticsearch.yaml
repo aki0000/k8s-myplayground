@@ -3,8 +3,8 @@ kind: StatefulSet
 metadata:
   creationTimestamp: null
   labels:
-    app: {{ .Release.Name }}
-  name: {{ .Release.Name }}
+    app: elasticsearch-{{ .Release.Name }}
+  name: elasticsearch-{{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
@@ -21,9 +21,9 @@ spec:
       securityContext:
       containers:
       - image: docker.elastic.co/elasticsearch/elasticsearch:7.12.0
-        name: {{ .Release.Name }}
+        name: elasticsearch-{{ .Release.Name }}
         volumeMounts:
-        - name: {{ .Release.Name }}-data
+        - name: elasticsearch-data-{{ .Release.Name }}
           mountPath: /data
         env:
         - name: discovery.type
@@ -35,9 +35,9 @@ spec:
           name: gossip 
       tolerations:
       - key: app
-        value: {{ .Release.Name }}
+        value: elasticsearch-{{ .Release.Name }}
         effect: NoSchedule
       volumes: 
-      - name: {{ .Release.Name }}-data
+      - name: elasticsearch-data-{{ .Release.Name }}
         persistentVolumeClaim:
-          claimName: {{ .Release.Name }}-pvc
+          claimName: elasticsearch-pvc-{{ .Release.Name }}
