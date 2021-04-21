@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: {{ .Release.Name }}
-  name: {{ .Release.Name }}
+    app: prometheus-{{ .Release.Name }}
+  name: prometheus-{{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: prometheus-{{ .Release.Name }}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: {{ .Release.Name }}
+        app: prometheus-{{ .Release.Name }}
     spec:
       containers:
       - image: prom/prometheus
-        name: {{ .Release.Name }}
+        name: prometheus-{{ .Release.Name }}
         volumeMounts:
         - name: prometheus-configmap
           mountPath: "/etc/prometheus/"
@@ -28,4 +28,4 @@ spec:
       volumes:
       - name: prometheus-configmap
         configMap:
-          name: {{ .Release.Name }}-cm
+          name: prometheus-cm{{ .Release.Name }}
