@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: elasticsearch--pvc-{{ .Release.Name }}
+  name: elasticsearch-pvc-{{ .Release.Name }}
 spec:
   accessModes:
   - ReadWriteOnce

@@ -28,4 +28,4 @@ spec:
       volumes:
       - name: prometheus-configmap
         configMap:
-          name: prometheus-cm{{ .Release.Name }}
+          name: prometheus-cm-{{ .Release.Name }}
